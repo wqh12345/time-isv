@@ -1,0 +1,384 @@
+"registrationLevelVoList": [
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建144",
+                "value": 6603608069,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建132",
+                "value": 6600154019,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建134",
+                "value": 6600107996,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建131",
+                "value": 6600101773,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "自动创建99",
+                "value": 6600082495,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "自动创建86",
+                "value": 6600055057,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建129\uD83C\uDF84",
+                "value": 6600053341,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": true,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "自动创建90",
+                "value": 6600050995,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建135",
+                "value": 6600037163,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建79",
+                "value": 6600011627,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "自动创建89",
+                "value": 6600011626,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "自动创建94",
+                "value": 6599986587,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "自动创建95",
+                "value": 6599985991,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建78",
+                "value": 6599985029,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "自动创建105",
+                "value": 6599985028,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "自动创建109",
+                "value": 6599984587,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建136",
+                "value": 6599982982,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建85",
+                "value": 6599969093,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建80",
+                "value": 6599950463,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            },
+            {
+                "projectKey": "676cf10fb33a688b0b7b2ebb",
+                "level": "需求-自动创建81",
+                "value": 6599941062,
+                "hasNext": true,
+                "isFillInOnBehalf": false,
+                "isAllManager": false,
+                "describe": false,
+                "enableApproval": false,
+                "workItemId": "story",
+                "canRegister": false,
+                "canRegisterLevel": true,
+                "canRegisterLevelName": [
+                    "work_item_entity",
+                    "node",
+                    "task"
+                ],
+                "children": []
+            }
+        ]
+    }
+}

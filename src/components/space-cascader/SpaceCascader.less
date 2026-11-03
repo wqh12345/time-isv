@@ -1,0 +1,123 @@
+.space-cascader {
+  width: 100%;
+}
+
+// 下拉面板容器：最多 5 列，保证横向可滚动、不挤压错位
+.space-cascader-dropdown {
+  // 最多 5 列，每列固定 168px；超宽时显示横向滚动条而非挤压重叠
+  max-width: calc(100vw - 32px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: inline-flex;
+  // antd 会给内部 .ant-cascader-menus 设置 inline-flex；这里确保外层不收缩
+  .ant-cascader-menus {
+    flex-shrink: 0;
+    line-height: 1.5;
+    // 每一列 menu 固定宽度，避免选中态长文本把列撑宽导致右侧列错位/叠加
+    .ant-cascader-menu {
+      width: 168px;
+      min-width: 168px;
+      max-width: 168px;
+      flex-shrink: 0;
+      height: 248px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      // 菜单项文本溢出省略，防止长名称撑宽列
+      .ant-cascader-menu-item {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        .ant-cascader-menu-item-content {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
+// 实例列底部的滚动加载提示项（sentinel）：水平居中展示 spinner + 文案
+.space-cascader-loading-sentinel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 0;
+  color: #999;
+  font-size: 12px;
+  line-height: 1;
+  pointer-events: none; // 整体不响应点击 / hover
+  user-select: none;
+}
+
+// sentinel 所在 menu item 去掉 hover / 选中视觉反馈，避免误以为可点击
+.ant-cascader-menu-item:has(.space-cascader-loading-sentinel) {
+  cursor: default !important;
+  background: transparent !important;
+  color: #999 !important;
+  // 隐藏 cascader 默认的下钻箭头，避免出现“可下钻”假象
+  .ant-cascader-menu-item-expand-icon,
+  .ant-cascader-menu-item-loading-icon {
+    display: none !important;
+  }
+}
+
+// 根列表请求期间保持稳定的下拉区域，确保 Loading 清晰可见
+.space-cascader-loading {
+  width: 168px;
+  min-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// notFoundContent 空态：居中布局，给个最小高度，避免空面板过矮
+.space-cascader-empty {
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  padding: 24px 12px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+  span {
+    line-height: 1;
+  }
+}
+
+// 子面板内的“暂无数据”占位项（整个 menu item 仅展示缺省图）
+.space-cascader-empty-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 8px;
+  min-height: 140px;
+  gap: 8px;
+  color: #999;
+  font-size: 12px;
+  line-height: 1;
+  img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    opacity: 0.85;
+  }
+}
+
+// 含缺省图的 menu item 去掉 hover / 选中 视觉反馈
+.ant-cascader-menu-item:has(.space-cascader-empty-item) {
+  cursor: default !important;
+  background: transparent !important;
+  padding: 0 !important;
+}

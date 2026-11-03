@@ -1,0 +1,1578 @@
+﻿﻿/**
+ * 管理后台页面样式
+ *
+ * 外层 .page-warp + .page-content 已提供「灰底 + 白卡片」的全局视觉。
+ * 本页只负责「左 sider + 右 main」的二栏布局，高度跟随父级 page-content。
+ */
+
+.admin-page {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 72px);
+  box-sizing: border-box;
+  overflow: visible;
+  border-radius: 8px;
+
+  // 统一系统设置下所有表格表头背景色
+  .ant-table-wrapper .ant-table-thead > tr > th {
+    background: rgba(248, 249, 250, 1) !important;
+  }
+
+  // 统一系统设置下所有标签去掉边框
+  .ant-tag {
+    border-color: transparent !important;
+  }
+
+  // ------------------------------------------------------ 左侧菜单
+  .admin-sider {
+    width: 220px;
+    flex-shrink: 0;
+    background: #fff;
+    // border: 1px solid #f0f0f0; 
+    border-radius: 8px;
+    padding: 16px 0;
+    box-sizing: border-box;
+    // 高度以内容为准，空间列表已限制高度所以不会超出视口
+    height: auto;
+    align-self: flex-start;
+    position: relative;
+
+    .admin-sider-header {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1F2329;
+      padding: 4px 20px 12px;
+      border-bottom: 1px solid #f0f0f0;
+      margin: 0 8px 8px;
+    }
+
+    .admin-menu {
+      border-inline-end: none !important;
+      background: transparent;
+      overflow: visible;
+      padding: 0 8px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      // 确保所有内部列表/项都撑满宽度
+      .ant-menu-item-group-list,
+      .ant-menu-list,
+      .ant-menu-submenu-title,
+      .ant-menu-item-group {
+        width: 100%;
+      }
+
+      // 自定义图片图标：未选中时灰度，仅选中时恢复蓝色（hover 不变色）
+      .ant-menu-item img,
+      .ant-menu-submenu-title img {
+        vertical-align: middle;
+        filter: grayscale(1);
+      }
+      .ant-menu-item-selected img {
+        filter: grayscale(0);
+      }
+
+      // 统一 antd Menu 选中/hover 颜色为 #4147F5
+      .ant-menu-item-selected {
+        background-color: #EFF4FF !important;
+        color: #4147F5 !important;
+        border-radius: 8px;
+      }
+      .ant-menu-item:hover:not(.ant-menu-item-selected),
+      .ant-menu-submenu-title:hover {
+        color: #1F2329 !important;
+        background-color: #F6F8F9 !important;
+        border-radius: 8px;
+      }
+      .ant-menu-item-selected::after {
+        border-inline-end-color: #4147F5 !important;
+        display: none;
+      }
+
+      // 分组标题
+      .ant-menu-item-group-title {
+        color: #646A73;
+        font-size: 12px;
+        padding: 8px 12px 4px;
+        margin-top: 4px;
+        margin-inline: 0;
+        line-height: 20px;
+      }
+
+      // 菜单项：选中/hover 背景铺满 sider 宽度
+      .ant-menu-item {
+        display: flex;
+        align-items: center;
+        height: 36px;
+        line-height: 36px;
+        margin: 0 !important;
+        padding: 0 12px !important;
+        border-radius: 8px;
+        flex: 0 0 auto;
+        width: calc(100% - 0px);
+        box-sizing: border-box;
+      }
+
+      // 空间配置列表容器菜单项：高度自适应，展开所有空间
+      .admin-space-list-item.ant-menu-item {
+        height: auto !important;
+        line-height: normal !important;
+        padding: 0 !important;
+        margin: 0;
+        width: 100%;
+        overflow: hidden !important;
+        cursor: default;
+        background: transparent !important;
+
+        &:hover,
+        &:active,
+        &.ant-menu-item-selected {
+          background: transparent !important;
+        }
+
+        // 移除 antd 菜单项默认的内边距包裹
+        .ant-menu-title-content {
+          display: block;
+          overflow: visible;
+        }
+      }
+
+      // 分组之间添加分割线
+      .ant-menu-item-group {
+        padding-bottom: 4px;
+        margin-bottom: 4px;
+        border-bottom: 1px solid #f0f0f0;
+
+        &:first-child .ant-menu-item-group-title {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
+      }
+
+      // 空间配置子菜单：类似 Select 下拉，悬浮不占高度
+      > .ant-menu-submenu {
+        > .ant-menu-submenu-title {
+          height: 36px;
+          line-height: 36px;
+          margin: 0;
+          padding: 0 12px;
+          border-radius: 8px;
+        }
+        // SubMenu 展开区域始终折叠为 0，不拉伸菜单高度
+        > .ant-menu-sub {
+          height: 0 !important;
+          overflow: visible !important;
+          position: relative;
+        }
+        // 实际空间列表：绝对定位，悬浮在菜单外部
+        > .ant-menu-sub .ant-menu-item-group {
+          position: absolute;
+          left: 8px;
+          top: calc(100% + 4px);
+          width: calc(100% - 16px);
+          z-index: 1000;
+          background: #fff;
+          border: 1px solid #e5e6eb;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+          padding: 4px 0;
+          margin: 0;
+          max-height: 300px;
+          overflow-y: auto;
+
+          .ant-menu-item-group-title {
+            display: none;
+          }
+        }
+      }
+    }
+
+    // 空间配置分组标题行（含添加空间按钮）
+    .admin-space-group-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding-right: 4px;
+    }
+
+    .admin-space-add-btn {
+      color: #4147F5;
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      &:hover {
+        color: #4147F5;
+      }
+    }
+
+    // 让 group title 能完整显示 flex 内容（antd 默认可能 overflow:hidden）
+    .ant-menu-item-group-title {
+      overflow: visible;
+    }
+  }
+
+  // ------------------------------------------------------ 空间配置平铺列表容器（默认展示10条，超出滚动）
+  .admin-space-scroll {
+    display: block;
+    max-height: min(400px, calc(100vh - 330px)); // 小屏下避开顶部菜单和侧栏内边距
+    overflow-y: auto;
+    padding: 0 0 8px;
+    box-sizing: border-box;
+    // 隐藏滚动条但保留滚动功能
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE/Edge
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+  }
+
+  // 空间配置平铺列表项
+  .admin-space-item-flat {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    padding: 0 12px;
+    margin: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #1F2329;
+    transition: background 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover {
+      background: #F6F8F9;
+    }
+
+    &.selected {
+      background: #EFF4FF;
+      color: #4147F5;
+      font-weight: 500;
+    }
+
+    .admin-space-label {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // ------------------------------------------------------ 空间菜单项（hover 显示删除）
+  .admin-space-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .admin-space-label {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .admin-space-del-icon {
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      filter: grayscale(1) opacity(0.6);
+
+      &:hover {
+        filter: grayscale(0) opacity(1);
+      }
+    }
+  }
+
+  // ------------------------------------------------------ 主内容区（Tabs 不动，内部 anchor-list 独立滚动）
+  .admin-main {
+    flex: 1;
+    // padding: 0px 16px 0;
+    overflow: hidden;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #f5f6f7;
+    margin-left: 15px;
+    border-radius: 8px;
+  }
+
+  .admin-space-content,
+  .admin-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px 24px 24px;
+
+    // 去掉最外层直接子级 Card 的边框，不影响内部嵌套的卡片
+    > .ant-card.ant-card-bordered {
+      border: none;
+    }
+  }
+
+  // ------------------------------------------------------ 设置子页面（路由页）
+  .admin-setting-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+
+    .admin-setting-header {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      // gap: 8px;
+      padding: 0;
+      background: transparent;
+      margin-bottom: 12px;
+
+      .admin-setting-back {
+        color: #1F2329;
+        font-size: 18px;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        &:hover {
+          color: #4147F5 !important;
+          background: rgba(65, 71, 245, 0.06) !important;
+        }
+        .ant-btn-icon {
+          display: inline-flex;
+          align-items: center;
+          line-height: 1;
+          margin: 0 !important;
+          font-size: 0;
+          img {
+            display: block;
+          }
+        }
+        .anticon {
+          font-size: 18px;
+        }
+      }
+
+      .admin-setting-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1F2329;
+        margin-left: 8px
+      }
+    }
+
+    .admin-setting-body {
+      // flex: 1;
+      overflow-y: auto;
+      min-height: 0;
+      background: #fff;
+      border-radius: 8px;
+      padding: 16px 24px 24px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      scrollbar-gutter: stable;
+    }
+  }
+
+  .admin-setting-body {
+    .workhour-footer-btns,
+    .approval-set-bottom,
+    .measure-set-bottom,
+    .standards-form-actions {
+      position: sticky !important;
+      left: 0 !important;
+      bottom: 0 !important;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      // margin-top: 16px;
+      padding: 12px 0;
+      // border-top: 1px solid #f0f0f0;
+      background: #fff;
+      box-shadow: 0 -8px 16px rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  .admin-page-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F2329;
+     margin-bottom: 4px;
+  }
+
+  // ------------------------------------------------------ 二级 Tabs（在 admin-main 顶部保持不动）
+  .admin-sub-tabs {
+    flex-shrink: 0;
+    background: #fff;
+
+    .ant-tabs-nav {
+      margin-bottom: 0 !important;
+      overflow: hidden;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-bottom: 1px solid #f0f0f0 !important;
+        content: '';
+      }
+    }
+    .ant-tabs-nav-wrap {
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    .ant-tabs-nav-list {
+      min-width: max-content;
+    }
+    .ant-tabs-tab {
+      padding: 12px 0;
+      margin-right: 32px !important;
+      font-size: 14px;
+      white-space: nowrap;
+
+      &.ant-tabs-tab-active .ant-tabs-tab-btn {
+        color: #4147F5 !important;
+      }
+
+      .ant-tabs-tab-btn {
+        color: #1F2329;
+        font-size: 14px;
+
+        &:hover {
+          color: #1F2329;
+        }
+      }
+    }
+
+    .ant-tabs-ink-bar {
+      background: #4147F5;
+      bottom: 0 !important;
+      z-index: 1;
+    }
+  }
+
+  // ------------------------------------------------------ Card 区块（独立滚动容器）
+  .admin-anchor-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    // 隐藏滚动条但保留滚动功能
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // IE/Edge
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
+
+    // 底部占位：确保最后几个区块也能滚动到容器顶部
+    &::after {
+      content: '';
+      flex-shrink: 0;
+      display: block;
+      min-height: 50vh;
+    }
+  }
+
+  .admin-section {
+    border-radius: 8px;
+    // box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    // border: 1px solid #f0f0f0;
+
+    .ant-card-head {
+      border-bottom: 1px solid #f0f0f0;
+      min-height: 48px;
+      padding: 0 16px;
+    }
+
+    .ant-card-head-title {
+      padding: 16px 0;
+    }
+
+    .ant-card-body {
+      padding: 16px;
+    }
+
+    // 卡片右上角设置按钮（default 按钮，白底灰边）
+    .ant-card-extra {
+      .ant-btn {
+        height: 32px !important;
+        background: #FFFFFF !important;
+        border-radius: 8px !important;
+        border: 1px solid #E8E8E8 !important;
+        color: #646A73 !important;
+        box-shadow: none !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px !important;
+        min-width: 64px;
+
+        // 添加按钮（含 + 图标）
+        &:has(.anticon) {
+          .anticon {
+            margin-right: 4px;
+            font-size: 12px;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          color: #4247F6 !important;
+          border-color: #4247F6 !important;
+          background: #fff !important;
+        }
+
+        // 意外作为 primary 时也强制为白底灰边
+        &.ant-btn-primary {
+          background: #FFFFFF !important;
+          border-color: #E8E8E8 !important;
+          color: #646A73 !important;
+          &:hover,
+          &:focus {
+            color: #4247F6 !important;
+            border-color: #4247F6 !important;
+            background: #fff !important;
+          }
+        }
+      }
+    }
+  }
+
+  .admin-section-hide-body {
+    .ant-card-body {
+      display: none;
+    }
+  }
+
+  .admin-section-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .admin-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .admin-section-title-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1F2329;
+    }
+  }
+
+  .admin-section-subtitle {
+    color: #646A73;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    white-space: normal;
+  }
+
+  .admin-section-help {
+    color: #bbb;
+    font-size: 12px;
+    margin-left: 4px;
+    cursor: default;
+  }
+
+  .admin-field-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .admin-field-tip {
+    color: #b8babf;
+    font-size: 14px;
+    cursor: default;
+  }
+
+  .admin-empty-desc {
+    color: #646A73;
+    font-size: 13px;
+  }
+
+  .admin-section-desc {
+    color: #646A73;
+    font-size: 12px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .admin-status-tag {
+    margin-left: 4px;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 0 6px;
+    line-height: 18px;
+    font-weight: 400 !important;
+  }
+
+  // ------------------------------------------------------ 内部 block
+  .admin-block {
+    margin-bottom: 24px;
+
+    &:last-child { margin-bottom: 0; }
+
+    .admin-block-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1F2329;
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+  }
+
+  // ------------------------------------------------------ 特殊节点流配置表格
+  .admin-special-table {
+    background: rgba(248, 249, 250, 1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .admin-special-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 80px;
+    align-items: center;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: #1F2329;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    &.admin-special-head {
+      color: #646A73;
+      font-weight: 500;
+    }
+  }
+
+  .admin-special-cell-op {
+    text-align: right;
+  }
+
+  // ------------------------------------------------------ KV 行（label：value）
+  .admin-kv {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 22px;
+
+    &:last-child { margin-bottom: 0; }
+
+    .admin-kv-label {
+      color: #646A73;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .admin-kv-value {
+      color: #1F2329;
+      word-break: break-all;
+    }
+  }
+
+  // 三列布局（登记规则、审批设置）
+  .admin-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px 24px;
+    // margin-bottom: 12px;
+  }
+
+  .admin-stats-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding-top: 4px;
+  }
+
+  .admin-stats-label {
+    margin-bottom: 8px;
+    color: #1F2329;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  .admin-stats-value {
+    color: #646A73;
+    font-size: 14px;
+    line-height: 22px;
+    word-break: break-all;
+  }
+
+  .admin-approval-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 4px;
+  }
+
+  .admin-approval-label {
+    margin-bottom: 8px;
+    color: #1F2329;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+
+  .admin-approval-value {
+    color: #646A73;
+    font-size: 14px;
+    line-height: 22px;
+    word-break: break-all;
+  }
+
+  // ------------------------------------------------------ Tag 容器
+  .admin-tag-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .admin-tag-grey {
+    background: #f4f5f8;
+    color: #646A73;
+    border-color: transparent;
+    border-radius: 4px;
+  }
+
+  .admin-tag-blue {
+    background: rgba(65, 71, 245, 0.08);
+    color: #4147F5;
+    border-color: transparent;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  // ------------------------------------------------------ 头像
+  .admin-avatar-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .admin-avatar-name {
+    background: #4147F5;
+    color: #fff;
+    font-size: 12px;
+    flex-shrink: 0;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .admin-avatar-inline {
+    background: #4147F5;
+    color: #fff;
+    font-size: 11px;
+    margin-right: 2px;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  // ------------------------------------------------------ 文字色
+  .admin-blue {
+    color: #4147F5;
+    font-weight: 500;
+  }
+
+  .admin-link {
+    color: #4147F5;
+    cursor: pointer;
+    &:hover { color: #4147F5; }
+  }
+
+  .admin-text-grey {
+    color: #646A73;
+  }
+
+  // ------------------------------------------------------ 占位页
+  .admin-placeholder {
+    overflow-y: auto;
+    gap: 16px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .admin-section {
+      padding: 0;
+    }
+
+    .admin-placeholder-text {
+      padding: 40px 0;
+      color: #646A73;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .admin-placeholder-loading {
+      padding: 40px 0;
+      text-align: center;
+    }
+  }
+
+  // ------------------------------------------------------ 页面说明文本
+  .admin-page-desc {
+    font-size: 14px;
+    color: #646A73;
+    line-height: 22px;
+    margin: -4px 0 16px;
+  }
+
+  // ------------------------------------------------------ 模式设置页
+  .admin-mode-card {
+    .ant-card-body {
+      padding: 0;
+    }
+
+    .admin-page-title,
+    .admin-page-desc {
+      // padding: 0 16px;
+    }
+    .admin-page-title {
+      // padding-top: 16px;
+    }
+
+    .admin-mode-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      // padding: 16px;
+    }
+
+    .admin-mode-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 16px 16px 16px;
+      border: 1px solid #e5e6eb;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+
+      &:hover {
+        border-color: rgba(65, 71, 245, 0.3);
+      }
+
+      &.is-active {
+        border: 1px solid #4147F5;
+        border-radius: 8px;
+        background: #F4F4FE;
+      }
+    }
+
+    .admin-mode-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    .admin-mode-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .admin-mode-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1F2329;
+      margin-bottom: 6px;
+    }
+
+    .admin-mode-line {
+      font-size: 14px;
+      color: #646A73;
+      line-height: 22px;
+    }
+
+    .admin-mode-radio {
+      flex-shrink: 0;
+      // 覆盖父级 align-items: flex-start，让 Radio 圆点在卡片内垂直居中
+      align-self: center;
+      margin: 0;
+      .ant-radio-inner {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  // ------------------------------------------------------ 已安装空间列表
+  .admin-installed-card {
+    .ant-card-body {
+      padding: 0;
+    }
+
+    .ant-spin,
+    .admin-empty {
+      padding: 16px;
+    }
+  }
+
+  .admin-installed-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F2329;
+    margin-bottom: 12px;
+    // padding: 16px 16px 0;
+  }
+
+  .admin-installed-count {
+    color: #646A73;
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 4px;
+  }
+
+  .admin-installed-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    // padding: 0 16px 16px;
+  }
+
+  .admin-installed-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid #e5e6eb;
+    border-radius: 6px;
+    background: #fff;
+    transition: border-color 0.2s, background 0.2s;
+
+    // &:hover {
+    //   border-color: #1664ff;
+    //   background: #f7faff;
+    // }
+  }
+
+  .admin-installed-idx {
+    font-size: 12px;
+    color: #4147F5;
+    font-weight: 500;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: #F4F4FE;
+    border-radius: 4px;
+  }
+
+  .admin-installed-name {
+    font-family: PingFang SC, PingFang SC;
+    font-weight: 400;
+    font-size: 16px;
+    color: #1F2329;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // ------------------------------------------------------ 租户配置公共：顶部标题区 + 分隔线
+  .admin-plain-card {
+    border: none;
+    .ant-card-body {
+      // padding: 8px;
+      padding: 0;
+    }
+    .admin-page-title {
+      margin-bottom: 4px;
+    }
+    .admin-page-desc {
+      margin: 0;
+    }
+  }
+
+  .admin-section-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    .admin-section-header-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    // 添加按钮
+    .admin-add-btn {
+      height: 32px;
+      background: #FFFFFF;
+      border-radius: 8px;
+      border: 1px solid #E8E8E8;
+      color: #646A73;
+      box-shadow: none;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      flex-shrink: 0;
+
+      .anticon {
+        margin-right: 4px;
+        font-size: 12px;
+      }
+
+      &:hover,
+      &:focus {
+        color: #4147F5 !important;
+        border-color: #4147F5 !important;
+        background: #fff !important;
+      }
+    }
+
+    // 头部操作按钮（"添加记录规范"、"设置"等）：白底灰边灰字，与卡片右上角"设置"按钮样式完全一致
+    .admin-section-header-btn.ant-btn {
+      height: 32px !important;
+      background: #FFFFFF !important;
+      border-radius: 8px !important;
+      border: 1px solid #E8E8E8 !important;
+      color: #646A73 !important;
+      box-shadow: none !important;
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      padding: 0 16px !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 64px;
+
+      &:hover,
+      &:focus {
+        color: #4247F6 !important;
+        border-color: #4247F6 !important;
+        background: #fff !important;
+      }
+
+      // 意外作为 primary 时也强制为白底灰边
+      &.ant-btn-primary {
+        background: #FFFFFF !important;
+        border-color: #E8E8E8 !important;
+        color: #646A73 !important;
+        &:hover,
+        &:focus {
+          color: #4247F6 !important;
+          border-color: #4247F6 !important;
+          background: #fff !important;
+        }
+      }
+    }
+  }
+
+  .admin-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 0 0 16px;
+  }
+
+  // ------------------------------------------------------ 记录规范卡片网格
+  .admin-rules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .admin-rule-card {
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: none;
+
+    &:hover {
+      border-color: transparent;
+      background: transparent;
+    }
+  }
+
+  .admin-rule-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .admin-rule-name {
+    flex: 0 1 auto;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F2329;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 280px;
+  }
+
+  .admin-rule-tag {
+    margin: 0;
+    font-size: 12px;
+    color: #4147F5;
+    background: rgba(65, 71, 245, 0.08);
+    border-color: rgba(65, 71, 245, 0.2);
+    line-height: 18px;
+    padding: 0 6px;
+  }
+
+  .admin-rule-arrow {
+    color: #c9cdd4;
+    font-size: 12px;
+  }
+
+  .admin-rule-count {
+    font-size: 14px;
+    color: #646A73;
+  }
+
+  // ------------------------------------------------------ 数据权限设置二级页
+  .admin-perm-rule-table {
+    .admin-perm-table-title {
+      margin-bottom: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 22px;
+      color: #1F2329;
+    }
+
+    .admin-perm-table-tip {
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 22px;
+      color: #646A73;
+    }
+
+    .admin-data-auth-table {
+      .ant-table {
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .ant-table-container,
+      .ant-table-content table {
+        border-color: #e5e6eb !important;
+      }
+
+      .ant-table-thead > tr > th {
+        padding: 8px 16px;
+        background: rgba(248, 249, 250, 1);
+        border-color: #e5e6eb !important;
+        color: #1F2329;
+        font-size: 15px !important;
+        font-weight: 500;
+      }
+
+      .ant-table-thead > tr > th::before {
+        display: none;
+      }
+
+      .ant-table-tbody > tr > td {
+        padding: 8px 16px;
+        border-color: #e5e6eb !important;
+        background: #fff;
+      }
+
+      .ant-table-tbody > tr:hover > td {
+        background: #fff;
+      }
+
+      .ant-table-bordered > .ant-table-container > .ant-table-header > table > thead > tr > th,
+      .ant-table-bordered > .ant-table-container > .ant-table-body > table > tbody > tr > td {
+        border-right: none !important;
+      }
+
+      .ant-table-footer {
+        padding: 8px 16px;
+        color: #262626;
+        background: #f8f9fa !important;
+      }
+
+      .add-row-container {
+        color: #646A73;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .add-role-row {
+        vertical-align: top;
+        margin-right: 2px;
+        margin-top: 3px;
+      }
+
+      .add-row-text {
+        cursor: pointer;
+      }
+
+      .auth-obj-item {
+        min-height: 32px;
+        cursor: pointer;
+        border-radius: 6px;
+        padding: 4px 32px 4px 8px;
+        border: 1px solid #e5e6eb;
+        position: relative;
+        background: #fff;
+        line-height: 32px;
+        text-align: left;
+      }
+
+      .delete-text {
+        color: #4247f6;
+      }
+
+      .auth-obj-item .team-name-jx {
+        display: inline-block;
+        max-width: 66px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        word-break: break-all;
+        color: #646A73;
+      }
+
+      .user-item-area {
+        padding: 2px 8px;
+        background-color: #F4F4F4;
+        color: #646A73;
+        border-radius: 4px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .user-item-area-num {
+        padding: 2px 8px;
+        background-color: #F4F4F4;
+        color: #646A73;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .auth-user-head {
+        position: absolute;
+        right: 5px;
+        top: 7px;
+        width: 23px;
+      }
+    }
+  }
+
+  .admin-perm-actions {
+    margin-top: 20px;
+  }
+
+// Tooltip 中长团队名/部门名省略样式（与权限设置二级页保持一致）
+.ant-tooltip .teams-long-show {
+  display: inline-block;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  word-break: break-all;
+}
+
+  .admin-perm-save-btn {
+    min-width: 96px;
+    height: 36px;
+    border-radius: 6px;
+  }
+
+  .admin-perm-save-btn.ant-btn-primary:disabled {
+    color: #fff;
+    background: #c9cdd4;
+    border-color: #c9cdd4;
+  }
+
+  // ------------------------------------------------------ 数据权限规则列表
+  .admin-perm-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .admin-perm-rule {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    background: #f7f8fa;
+    border-radius: 6px;
+  }
+
+  .admin-perm-rule-no {
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F2329;
+    width: 56px;
+    padding-top: 2px;
+  }
+
+  .admin-perm-rule-body {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .admin-perm-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    gap: 6px;
+  }
+
+  .admin-perm-label {
+    flex-shrink: 0;
+    font-size: 14px;
+    color: #646A73;
+  }
+
+  .admin-perm-value {
+    width: 100%;
+    font-size: 14px;
+    color: #1F2329;
+    line-height: 22px;
+    word-break: break-all;
+  }
+
+  .admin-perm-del {
+    flex-shrink: 0;
+    align-self: center;
+  }
+
+  .admin-avatar-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px 2px 2px;
+    background: #fff;
+    border-radius: 12px;
+    margin: 2px 4px 2px 0;
+  }
+
+  .admin-avatar-chip-name {
+    font-size: 12px;
+    color: #1F2329;
+  }
+
+  // ------------------------------------------------------ 应用管理员表格
+  .admin-app-admin-table {
+    .ant-table-thead > tr > th {
+      background: rgba(248, 249, 250, 1);
+      color: #646A73;
+      font-weight: 500;
+    }
+
+    // 空状态下隐藏占位行下边框（即表头下方那条横线）
+    .ant-table-placeholder {
+      td {
+        border-bottom: none;
+        // 缩窄空状态区域垂直留白，与登记规则等其他卡片的紧凑度一致
+        padding: 24px 0 !important;
+      }
+    }
+  }
+
+  // 所有 admin-section 卡片内表格：紧贴卡片边缘，去掉外层间距
+  .admin-section {
+    .ant-table {
+      // 去掉表格最上面的分隔线
+      .ant-table-container {
+        border-top: none;
+      }
+    }
+
+    // 空状态下占位行紧凑一些
+    .ant-table-placeholder {
+      .ant-empty {
+        margin-block: 0;
+      }
+
+      .ant-empty-image {
+        height: 48px;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  // 插件管理员表格空状态同样去掉占位行下边框
+  .admin-section .ant-table-placeholder > td {
+    border-bottom: none;
+  }
+}
+
+// 小窗口高度下锁定管理后台内部滚动，避免左侧菜单撑开 body 触发全局滚动
+@media (max-height: 820px) {
+  .admin-page {
+    overflow: hidden;
+
+    .admin-sider {
+      height: 100%;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .admin-menu {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .admin-main,
+    .admin-space-content,
+    .admin-setting-page {
+      min-height: 0;
+    }
+
+    .admin-space-list-item,
+    .admin-space-list-item .ant-menu-title-content {
+      min-height: 0;
+    }
+  }
+}
+
+// 兼容窄屏：左侧菜单可被收起（暂以最小宽度处理）
+@media (max-width: 1100px) {
+  .admin-page {
+    .admin-sider { width: 200px; }
+    .admin-main { margin-left: 12px; }
+    .admin-sub-tabs .ant-tabs-tab { margin-right: 16px !important; }
+    .admin-installed-grid { grid-template-columns: repeat(2, 1fr); }
+    .admin-rules-grid { grid-template-columns: repeat(2, 1fr); }
+    .admin-grid-3 { grid-template-columns: 1fr 1fr; }
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-page {
+    .admin-sider { width: 168px; padding: 12px 6px; }
+    .admin-main { margin-left: 8px; }
+    .admin-mode-card .admin-mode-row { grid-template-columns: 1fr; }
+    .admin-installed-grid { grid-template-columns: 1fr; }
+    .admin-rules-grid { grid-template-columns: 1fr; }
+  }
+}
+
+// ------------------------------------------------------ 模式切换确认弹窗（根级，因 Modal Portal 渲染到 body）
+.mode-switch-modal {
+  padding: 8px 0 0;
+  // height: 252px;
+
+  &-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1F2329;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &-icon {
+    color: #faad14;
+    font-size: 18px;
+  }
+
+  &-desc {
+    margin-bottom: 20px;
+
+    p {
+      margin: 0 0 4px;
+      font-size: 14px;
+      color: #646A73;
+      line-height: 22px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding-top: 4px;
+
+    .ant-btn-primary.ant-btn-dangerous {
+      background: #f54847 !important;
+      border-color: #f54847 !important;
+    }
+  }
+}
+.ant-card-bordered {
+    // border: none;
+}

@@ -1,0 +1,376 @@
+// 选择成员弹窗样式
+@primary-color: #4147F5;
+@primary-hover: #3A3FDC;
+
+.msm-body {
+  display: flex;
+  gap: 20px;
+  height: 500px;
+
+  // ---- 左侧面板 ----
+  .msm-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ededed;
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 0;
+    height: 100%;
+  }
+
+  .msm-search {
+    padding: 16px 16px 8px;
+
+    .ant-input-affix-wrapper {
+      border-radius: 20px;
+      border-color: #ededed;
+    }
+  }
+
+  // Tab 栏
+  .msm-tabs {
+    display: flex;
+    gap: 4px;
+    padding: 0 16px 8px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .msm-tab-item {
+    position: relative;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #4e5969;
+    cursor: pointer;
+    transition: color 0.2s;
+    white-space: nowrap;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      border-radius: 1px;
+      background: @primary-color;
+      transition: width 0.2s;
+    }
+
+    &:hover {
+      color: @primary-color;
+    }
+
+    &.is-active {
+      color: @primary-color;
+      font-weight: 500;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  // 全选行
+  .msm-check-all {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    // border-bottom: 1px solid #f0f0f0;
+    // background: #fafbfc;
+
+    .msm-check-all-count {
+      font-size: 12px;
+      color: #8f959e;
+    }
+  }
+
+  // 部门面包屑导航
+  .msm-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    // border-bottom: 1px solid #f0f0f0;
+    // background: #fafbfc;
+    flex-wrap: wrap;
+
+    .msm-breadcrumb-item {
+      font-size: 13px;
+      color: @primary-color;
+      cursor: pointer;
+      white-space: nowrap;
+
+      &.is-current {
+        color: #1f2329;
+        font-weight: 500;
+        cursor: default;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .msm-breadcrumb-sep {
+      font-size: 10px;
+      color: #bbb;
+    }
+  }
+
+  // Spin 包裹层需参与 flex 布局
+  .ant-spin-nested-loading,
+  .ant-spin-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  // 成员列表（虚拟滚动容器）
+  .msm-list {
+    flex: 1;
+    min-height: 0; // flex 子元素必须设置才能正确滚动
+    // react-virtualized AutoSizer 需要父容器有明确高度
+    // 内部滚动由虚拟列表接管，不再需要 overflow-y: auto
+  }
+
+  .msm-list-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #f7f8fa;
+    }
+
+    &.is-checked {
+      background: #fff;
+    }
+
+    .msm-list-item-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .msm-list-item-name {
+      font-size: 14px;
+      color: #1f2329;
+      line-height: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .msm-list-item-org {
+      font-size: 12px;
+      color: #8f959e;
+      line-height: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    // 部门展开按钮
+    .msm-list-item-expand {
+      flex-shrink: 0;
+      font-size: 12px;
+      color: @primary-color;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: background 0.15s;
+
+      &:hover {
+        background: #EEEDFF;
+      }
+
+      &.is-disabled {
+        color: #c9cdd4;
+        cursor: not-allowed;
+
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+
+  .msm-tip {
+    padding: 10px 16px;
+    font-size: 12px;
+    color: #8f959e;
+    border-top: 1px solid #f0f0f0;
+    background: #fafbfc;
+    line-height: 18px;
+  }
+
+  // ---- 右侧面板 ----
+  .msm-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ededed;
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 0;
+    height: 100%;
+  }
+
+  .msm-right-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 16px 12px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .msm-right-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1f2329;
+  }
+
+  .msm-right-clear {
+    font-size: 13px;
+    color: @primary-color;
+    cursor: pointer;
+
+    &:hover {
+      color: @primary-hover;
+    }
+  }
+
+  // 右侧已选列表（虚拟滚动容器）
+  .msm-right-list {
+    flex: 1;
+    min-height: 0;
+    // react-virtualized AutoSizer 需要父容器有明确高度
+  }
+
+  .msm-right-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px 10px 16px;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #f7f8fa;
+    }
+
+    .msm-right-item-left {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .msm-right-item-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .msm-right-item-name {
+      font-size: 14px;
+      // font-weight: 500;
+      color: #1f2329;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .msm-right-item-sub {
+      font-size: 12px;
+      color: #86909c;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  // ---- 公共 ----
+  .msm-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+  }
+
+  .msm-no-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #727272;
+    font-size: 12px;
+  }
+
+  .msm-no-data img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+  }
+}
+
+// ---- Footer ----
+.msm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  .msm-footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+
+    .ant-checkbox-wrapper {
+      font-size: 13px;
+      color: #4e5969;
+      margin-left: 0;
+    }
+  }
+
+  .msm-footer-right {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+
+    // 确定按钮颜色
+    .ant-btn-primary {
+      background: @primary-color;
+      border-color: @primary-color;
+
+      &:hover,
+      &:focus {
+        background: @primary-hover !important;
+        border-color: @primary-hover !important;
+      }
+
+      &:disabled {
+        background: #c7c9f9 !important;
+        border-color: #c7c9f9 !important;
+        color: #fff !important;
+      }
+    }
+  }
+}

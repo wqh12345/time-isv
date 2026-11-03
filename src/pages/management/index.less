@@ -1,0 +1,158 @@
+.management-warp {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  .management-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    background: #fff;
+    z-index: 1;
+    // margin-top: 16px;
+    .top-left {
+      .ant-btn-link {
+        padding: 0;
+      }
+    }
+    .top-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-width: 0;
+
+      .ant-divider-vertical {
+        margin-inline: 0;
+      }
+    }
+  }
+  .management-scroll-body {
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    overscroll-behavior: contain;
+  }
+  .management-content {
+    margin-top: 24px;
+    .content-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .content-top-box {
+        min-width: 170px;
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #ededed;
+        border-radius: 6px;
+        padding: 12px 12px;
+        .box-left {
+          min-width: 125px;
+          .icon {
+            margin-right: 5px;
+            color: #4247f6;
+          }
+        }
+        .box-right {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: break-all;
+        }
+      }
+      .flex-box {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .content-body{
+      // height: calc(100vh - 210px);
+      .content-table {
+        margin-top: 24px;
+        .content-table-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .header-title{
+            font-weight: 500;
+          }
+        }
+        .content-table-body{
+          margin-top: 16px;
+          // 兄弟一致：强制表头、数据行、合计行单元格左对齐
+          // （column.align 在 fixed 列或自定义 render 返回 flex 容器时可能失效，这里托底）
+          .ant-table-thead > tr > th,
+          .ant-table-tbody > tr > td,
+          .ant-table-summary > tr > td {
+            text-align: left !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .ant-table-cell-ellipsis {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .ant-table-cell-content,
+          .ant-table-column-title {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .management-table-ellipsis {
+            display: inline-block;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: bottom;
+          }
+          .ant-table-tbody > tr > td .management-table-ellipsis {
+            box-sizing: border-box;
+          }
+          // 若 render 返回的是 flex/inline-flex 容器，让其内部元素也左对齐
+          .ant-table-cell > .ant-flex,
+          .ant-table-cell > .ant-space {
+            justify-content: flex-start;
+          }
+          // 滚动条列宽度统一为 10px
+          .ant-table-thead > tr > th.ant-table-cell-scrollbar,
+          .ant-table-summary > tr > td.ant-table-cell-scrollbar {
+            width: 10px !important;
+            min-width: 10px !important;
+            max-width: 10px !important;
+            padding: 8px 0 !important;
+          }
+          // “窄列”（未出现横向滚动条 / 数据量少）时整体居左展示
+          &.is-narrow {
+            .ant-table-thead > tr > th,
+            .ant-table-tbody > tr > td,
+            .ant-table-summary > tr > td {
+              text-align: left !important;
+            }
+            .ant-table-cell > .ant-flex,
+            .ant-table-cell > .ant-space {
+              justify-content: flex-start;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

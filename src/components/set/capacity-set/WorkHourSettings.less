@@ -1,0 +1,357 @@
+.set-workhour-new-2 {
+  // 路由页面下使用全宽布局，不再居中限宽
+  margin: 0;
+  padding: 0;
+  border-radius: 4px;
+  // 为了让底部按钮 sticky 生效，这里不能设置 overflow: hidden
+  overflow: visible;
+  position: relative;
+  .label-desc {
+    font-size: 14px;
+    color: #646A73;
+  }
+  
+  // 成员可登记范围样式
+  .registration-scope-radio {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    gap: 0;
+  }
+  
+  .scope-radio {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #1F2329;
+    line-height: 22px;
+  }
+  
+  .radio-desc {
+    font-size: 12px;
+    color: #646A73;
+    margin-left: 25px;
+    margin-bottom: 13px;
+  }
+  
+  // 调整Radio组件样式
+  .ant-radio-wrapper {
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .ant-radio-wrapper-checked .ant-radio-inner {
+    border-color: #165DFF;
+    background-color: #165DFF;
+  }
+  
+  .ant-radio-wrapper-checked .ant-radio-inner:after {
+    transform: scale(0.5);
+  }
+  .ant-typography.ant-typography-secondary {
+    color: #646A73;
+  }
+  .setting-item{
+    color: #1F2329;
+  }
+  .set-form-f16 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .head-workitem-desc{
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #646A73;
+  }
+  .common-card-item {
+    padding: 12px 0px;
+    // border-radius: 8px;
+    // border: 1px solid #E8E8E8;
+    // margin-bottom: 12px;
+    position: relative;
+
+    .card-item-header {
+      display: flex;
+      // justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      h5.ant-typography {
+        font-size: 14px;
+        font-weight: 600;
+        color: #1F2329;
+        padding-right: 12px;
+      }
+    }
+    .card-item-desc {
+      font-size: 14px;
+      color: #646A73;
+      line-height: 20px;
+    }
+  }
+  .setting-level{
+    font-size: 14px;
+    font-weight: normal;
+    color: #1F2329;
+    margin-top: 20px;
+  }
+  .ant-checkbox-wrapper{
+    margin-right: 15px;
+  }
+  .setting-desc{
+    font-size: 14px;
+    color: #646A73;
+    padding: 4px 0 6px;
+  }
+  // Tab 标签栏：标准下划线风格（对齐原型）
+  .ant-tabs-nav {
+    margin-bottom: 0;
+    position: relative;
+    &::before {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-bottom: 1px solid #e8e8e8;
+      content: '';
+    }
+  }
+  .ant-tabs-ink-bar {
+    background: #4147F5;
+    bottom: 0 !important;
+    z-index: 1;
+  }
+  .ant-tabs-nav-list {
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    height: auto;
+    width: auto;
+  }
+  .ant-tabs .ant-tabs-tab {
+    border-radius: 0;
+    width: auto;
+    margin-right: 0;
+    justify-content: center;
+    padding: 12px 0 12px 0;
+    background: none !important;
+    font-size: 14px;
+    color: #646A73;
+    margin-right: 16px;
+    &:hover {
+      color: #1F2329;
+    }
+  }
+  .ant-tabs .ant-tabs-tab-active {
+    background: none !important;
+  }
+  .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #4147F5;
+    font-weight: 500;
+  }
+  // Switch 不再用绝对定位，统一由 .card-item-header flex 布局控制
+  .admin-setting-switch,
+  .early-setting-switch,
+  .work-desc-required-switch {
+    flex-shrink: 0;
+  }
+  .ant-tabs-content{
+    // 路由页模式下不限制高度，跟随内容自适应
+    overflow-y: visible;
+  }
+  
+  // InputNumber错误状态样式 - 始终保持正常边框颜色，不显示红色边框
+  .ant-form-item-has-error .ant-input-number {
+    border-color: #d9d9d9 !important;
+    box-shadow: none !important;
+  }
+  
+  .set-workhour-new-2 .ant-form-item-has-error .ant-input-number:focus,
+  .set-workhour-new-2 .ant-form-item-has-error .ant-input-number-focused {
+    border-color: #4096ff !important;
+    box-shadow: 0 0 0 2px rgba(64, 150, 255, 0.1) !important;
+  }
+  
+  .set-workhour-new-2 .ant-form-item-has-error .ant-input-number:hover {
+    border-color: #4096ff !important;
+  }
+  
+  // 确保即使在表单验证错误时也不显示红色边框
+  .set-workhour-new-2 .ant-form-item-has-error .ant-input-number:not(.ant-input-number-disabled):not(.ant-input-number-borderless).ant-input-number {
+    border-color: #d9d9d9 !important;
+  }
+  
+  // InputNumber Group错误状态样式
+  .ant-input-number-group-wrapper-outlined.ant-input-number-group-wrapper-status-error .ant-input-number-group-addon {
+    border-color: #EDEDED !important;
+    color: #262626 !important;
+  }
+
+  // InputNumber addonAfter 灰色背景（单位"天"）
+  .ant-input-number-group-addon {
+    background: #E8E8E8FF;
+    border-color: #E8E8E8FF;
+    color: #646A73FF;
+    padding: 0 11px;
+    border-radius: 0 6px 6px 0;
+  }
+  .ant-input-number-group-wrapper .ant-input-number {
+    width: 100px;
+    border-radius: 6px 0 0 6px !important;
+  }
+  .icon {
+      color: #bbbbbb;
+      margin: 0 4px;
+  }
+  .level-set-error {
+    color: red;
+    font-size: 12px;
+  }
+  .ant-table-wrapper .ant-table-footer {
+    padding: 8px;
+    color: #262626;
+    background: #F8F9FA;
+  }
+  .add-row-container {
+    color: #646A73;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ant-table-container > .ant-table-header > table > thead > tr > th{
+    border-right: none !important;
+  }
+  .ant-table-container > .ant-table-header > table > thead > tr > th:last-child {
+    border-right:1px solid #f0f0f0 !important;
+  }
+  .ant-table-wrapper .ant-table.ant-table-bordered >.ant-table-container >.ant-table-body >table >tbody>tr>td{
+    border-right: none !important;
+  }
+  .ant-table-wrapper .ant-table.ant-table-bordered >.ant-table-container >.ant-table-body >table >tbody>tr>td:last-child {
+    border-right:1px solid #f0f0f0 !important;
+  }
+  .registration-scope {
+  width: 100%;
+  padding: 14px 0px;
+  .approval-table-header {
+    margin-bottom: 8px;
+    .header-title {
+      color: #262626;
+      margin-bottom: 0;
+    }
+    .header-tip {
+      color: #ff4d4f;
+      font-size: 12px;
+    }
+  }
+  .ant-table {
+    margin-bottom: 16px;
+    .ant-table-thead > tr > th {
+      background-color: #F8F9FA;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .ant-table-tbody > tr > td {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .ant-table-tbody > tr:last-child > td {
+      border-bottom: none;
+    }
+    .ant-table-body >table >tbody>tr>td{
+      vertical-align: top;
+    }
+    .ant-table-body >table >tbody>tr>td:last-child{
+      vertical-align: middle
+    }
+    .add-role-row{
+      vertical-align: top;
+      margin-right: 2px;
+      margin-top: 3px;
+    }
+  }
+  .add-row-container {
+    color: #646A73;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 16px;
+  }
+  .ant-table-wrapper .ant-table-footer {
+    padding: 8px;
+    color: #262626;
+    background: #F8F9FA;
+}
+.ant-table-wrapper .ant-table-thead>tr>th,.ant-table-wrapper .ant-table-tbody>tr>td{
+  padding: 8px 16px;
+}
+.action-buttons{
+  cursor: pointer;
+}
+.action-delete-link {
+  color: #3370ff;
+  cursor: pointer;
+  font-size: 14px;
+  &:hover {
+    color: #245bdb;
+  }
+}
+}
+  .add-row-btn{
+    cursor: pointer;
+    color: #646A73;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .pd-t4{
+    padding: 4px 0;
+  }
+  // 登记范围 / 可登记层级 各 section 间距
+  .registration-scope .setting-section {
+    margin-bottom: 24px;
+    &:last-child { margin-bottom: 0; }
+    // 标题统一 14px
+    h5.ant-typography {
+      font-size: 14px;
+      color: #1F2329;
+    }
+  }
+  // 禁填设置内部多行块间距
+  .registration-scope .setting-section .setting-item {
+    margin-bottom: 4px;
+    &:last-child { margin-bottom: 0; }
+  }
+  .registration-scope .setting-section .setting-item .setting-level {
+    margin-top: 16px;
+    // font-weight: 600;
+    color: #1F2329;
+  }
+  // 第一个 setting-item 不需要额外 margin-top
+  .registration-scope .setting-section .setting-item:first-child .setting-level {
+    margin-top: 0;
+  }
+  // 底部按钮：sticky 悬浮在滚动容器（admin-setting-body）底部
+  .workhour-footer-btns {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    margin-top: 16px;
+    // border-top: 1px solid #f0f0f0;
+    background: #fff;
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    .ant-btn {
+      min-width: 80px;
+      height: 32px;
+    }
+  }
+  .ant-select-multiple.ant-select-sm .ant-select-selection-wrap {
+    align-self: center;
+  }
+  .ant-select-multiple .ant-select-selection-item {
+    height: 28px;
+    line-height: 26px;
+    border-radius: 6px !important;
+  }
+}

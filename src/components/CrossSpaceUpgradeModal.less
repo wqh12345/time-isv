@@ -1,0 +1,215 @@
+/**
+ * 跨空间升级引导弹窗
+ * - 一比一还原原型：标题 + 体验版小字、2×2 功能卡片、可选的"已安装工时插件的空间"列表、右下角"开始体验"按钮
+ */
+.cross-space-upgrade-modal {
+  .ant-modal-content {
+    padding: 24px 24px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(31, 35, 41, 0.18);
+    overflow: hidden;
+    position: relative;
+    // 弹窗整体背景装饰：使用 isv/组 73114.png 作为铺满整个弹窗的背景图
+    background-image: url('../assets/isv/组 73114.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #ffffff;
+  }
+
+  .ant-modal-body {
+    padding: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cs-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .cs-modal-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2329;
+    line-height: 26px;
+
+    .cs-modal-title-icon {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+  }
+
+  .cs-modal-close {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #86909c;
+    cursor: pointer;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: #f2f3f5;
+      color: #1f2329;
+    }
+  }
+
+  .cs-modal-subtitle {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #8f959e;
+    line-height: 20px;
+  }
+
+  // 功能卡片
+  .cs-feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .cs-feature-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    border-radius: 8px;
+  }
+
+  .cs-feature-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  .cs-feature-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cs-feature-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2329;
+    line-height: 20px;
+    margin-bottom: 4px;
+  }
+
+  .cs-feature-desc {
+    font-size: 12px;
+    color: #8f959e;
+    line-height: 18px;
+  }
+
+  // 已安装空间列表（仅管理员）
+  .cs-install-box {
+    margin-top: 16px;
+    border: 1px solid rgba(229, 230, 235, 0.6);
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .cs-install-header {
+    padding: 10px 16px;
+    background: rgba(245, 247, 250, 0.7);
+    border-bottom: 1px solid rgba(229, 230, 235, 0.6);
+    font-size: 13px;
+    color: #4e5969;
+
+    .cs-install-count {
+      color: #4f6bff;
+      font-weight: 500;
+    }
+  }
+
+  .cs-install-list {
+    max-height: 220px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .cs-install-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 24px 0;
+  }
+
+  .cs-install-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(229, 230, 235, 0.7);
+    border-radius: 6px;
+
+    .cs-install-item-index {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f4ff;
+      color: #4f6bff;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 4px;
+    }
+
+    .cs-install-item-name {
+      font-size: 13px;
+      color: #1f2329;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // 底部按钮
+  .cs-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+
+  .cs-start-btn.ant-btn-primary {
+    height: 36px;
+    padding: 0 24px;
+    background: #4f6bff;
+    border-color: #4f6bff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+
+    &:hover {
+      background: #6a82ff;
+      border-color: #6a82ff;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+# ==================== 依赖 ====================
+node_modules
+.pnp
+.pnp.js
+
+# ==================== 打包产物 / 构建输出 ====================
+dist
+dist-dev
+dist-test
+dist-ssr
+build
+out
+.vite
+.vite-cache
+.cache
+.parcel-cache
+.next
+.nuxt
+.turbo
+.svelte-kit
+
+# ==================== 日志 ====================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ==================== 测试 / 覆盖率 ====================
+coverage
+.nyc_output
+*.lcov
+
+# ==================== 环境变量（本地） ====================
+.env.local
+.env.*.local
+
+# ==================== 编辑器 / IDE ====================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ==================== 临时文件 ====================
+*.tmp
+*.temp
+*.pid
+*.seed
+*.pid.lock
+
+# 接口调试 / mock 用临时 JSON（如 src/api/a.json）
+src/api/*.json
+
+# ==================== 其他 ====================
+*.md

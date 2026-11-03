@@ -1,0 +1,78 @@
+.page-warp {
+  // 所有页面都有顶部 padding，避免内容被固定的 Tabs 遮挡
+  padding-top: 60px;
+  // 默认背景是白色
+  background: #fff;
+  min-height: 100vh;
+  box-sizing: border-box;
+  .page-tabs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #fff;
+    padding: 10px;
+    .help-icon {
+      font-weight: 600;
+      min-width: 24px;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    // .ant-tabs-content-holder {
+    //   height: calc(100vh - 70px);
+    //   overflow: auto;
+    // }
+  }
+  // 全局内容容器：不再统一设置白底，由各子页面自行控制
+  .page-content {
+    border-radius: 8px;
+    box-sizing: border-box;
+    // 高度 = 视口 - Tabs(60) - 底部留白(12)，刚好填满可视区
+    min-height: calc(100vh - 72px);
+    // 子页面原本依赖 .page-warp 左右 padding:10px，这里补上以保持布局不变
+    padding: 0 10px;
+    overflow-x: hidden;
+  }
+  // 只有管理后台页面有灰色背景和完整边距
+  &.page-warp-with-margin {
+    padding: 60px 12px 12px; // 覆盖默认的顶部 padding，加上左右和底部
+    background: #f5f6fa; // 灰色背景
+    .page-content {
+      // 调整高度计算，因为已经有了 padding
+      min-height: calc(100vh - 72px - 60px - 12px); // 减去顶部和底部的 padding
+      padding: 0; // 移除默认的 padding，因为边距已经在 page-warp 上了
+      // background: #fff; // 在灰色留白区域内，内容部分应该是白色背景
+      margin-left: 24px;
+      margin-right: 24px;
+    }
+  }
+
+  &.page-warp-management {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .page-content {
+      flex: 1;
+      height: auto;
+      min-height: 0;
+      overflow: hidden;
+      scrollbar-gutter: stable;
+    }
+  }
+
+  &.page-warp-task {
+    padding-top: 0;
+
+    .page-content {
+      min-height: 100vh;
+      padding: 0;
+    }
+  }
+}

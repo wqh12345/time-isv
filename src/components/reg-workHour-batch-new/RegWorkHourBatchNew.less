@@ -1,0 +1,376 @@
+.regWorkHourBatchNew-warp {
+  /* 当 prop.type="tab" 时的特殊样式 */
+  &.regWorkHourBatchNew-warp-no-tab {
+    // height: calc(100vh - 98px);
+    overflow-y: auto;
+  }
+  .custom-levelIcon {
+    width:15px;
+    height:15px;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 3px;
+    margin-right: 1px;
+  }
+  .registration-alert {
+    margin-bottom: 7px;
+    padding: 4px 12px;
+    .num {
+      color: #4247f6;
+      margin: 0 4px;
+    }
+    .icon {
+      color: #bbbbbb;
+      margin: 0 4px;
+    }
+  }
+  .regWorkHourBatchNew-header {
+    // margin-top: 12px;
+    margin-bottom: 0;
+    .header-box {
+      //margin-bottom: 10px;
+      margin-bottom: 8px;
+      .des-icon {
+        color: #bbbbbb;
+      }
+      .title {
+        &::before {
+          display: inline-block;
+          margin-inline-end: 4px;
+          color: #df000e;
+          font-size: 14px;
+          font-family: SimSun, sans-serif;
+          line-height: 1;
+          content: "*";
+        }
+      }
+    }
+    .save-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+    }
+
+    &.standard-layout {
+      display: grid;
+      grid-template-areas:
+        "member work-date"
+        "space schedule"
+        "work-item-type responsible"
+        "work-item-instance ."
+        "alert alert";
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+      column-gap: 24px;
+
+      > br {
+        display: none;
+      }
+
+      .header-box {
+        min-width: 0;
+        width: 100%;
+
+        > .ant-space-item {
+          min-width: 0;
+        }
+      }
+
+      .filter-member,
+      .filter-space,
+      .filter-work-item-type,
+      .filter-work-item-instance {
+        > .ant-space-item:first-child {
+          flex: 0 0 112px;
+        }
+
+        > .ant-space-item:last-child {
+          flex: 1;
+        }
+      }
+
+      .filter-work-date,
+      .filter-schedule,
+      .filter-responsible {
+        > .ant-space-item:first-child {
+          flex: 0 0 154px;
+          white-space: nowrap;
+        }
+      }
+
+      .filter-responsible > .ant-space-item:nth-child(3) {
+        flex: 1;
+      }
+
+      .filter-label-with-tooltip {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+      }
+
+      .filter-work-date > .ant-space-item:nth-child(2),
+      .filter-schedule > .ant-space-item:nth-child(2) {
+        flex: 0 0 210px;
+        min-width: 210px;
+      }
+
+      .filter-work-date .ant-picker,
+      .filter-schedule .ant-picker,
+      .filter-member .ant-select,
+      .filter-space .ant-select,
+      .filter-work-item-type .ant-select,
+      .filter-work-item-instance .ant-select {
+        width: 100%;
+      }
+
+      .filter-work-date .ant-radio-group {
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      .filter-member {
+        grid-area: member;
+      }
+
+      .filter-work-date {
+        grid-area: work-date;
+      }
+
+      .filter-space {
+        grid-area: space;
+      }
+
+      .filter-schedule {
+        grid-area: schedule;
+      }
+
+      .filter-work-item-type {
+        grid-area: work-item-type;
+      }
+
+      .filter-responsible {
+        grid-area: responsible;
+      }
+
+      .filter-work-item-instance {
+        grid-area: work-item-instance;
+      }
+
+      > .registration-alert {
+        grid-area: alert;
+      }
+
+      @media (max-width: 900px) {
+        grid-template-areas:
+          "member"
+          "work-date"
+          "space"
+          "schedule"
+          "work-item-type"
+          "responsible"
+          "work-item-instance"
+          "alert";
+        grid-template-columns: minmax(0, 1fr);
+        column-gap: 0;
+      }
+
+      @media (max-width: 600px) {
+        .filter-work-date,
+        .filter-responsible {
+          flex-wrap: wrap;
+        }
+
+        .filter-work-date .ant-radio-group,
+        .filter-responsible > .ant-space-item:nth-child(3) {
+          flex-basis: 100%;
+        }
+
+        .filter-work-date > .ant-space-item:nth-child(2),
+        .filter-schedule > .ant-space-item:nth-child(2) {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+
+      }
+    }
+  }
+  .regWorkHourBatchNew-body {
+    position: relative;
+    .level-list{
+      position: absolute;
+      z-index: 999;
+      top: 22px;
+      left: 110px;
+      .zhankai-icon{
+        margin-left: 0;
+        margin-right: 5px;
+        color: rgba(0,0,0,.54);
+        cursor: pointer;
+        display:flex;
+        align-items:center
+      }
+    }
+    .body-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+  }
+  .regWorkHourBatchNew-footer {
+    margin-top: 12px;
+    text-align: right;
+  }
+
+  .ant-tooltip{
+    max-width: 500px;
+  }
+  .table-warp {
+    position: relative;
+    // 日期切换时的优化样式，消除抖动效果
+    &.date-changing {
+      // 禁用过渡动画，减少视觉闪烁
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
+      // 保持布局稳定，避免重排
+      .ant-table {
+        min-height: 210px;
+      }
+    }
+    .ant-table-row-expand-icon-cell {
+      text-align-last: left;
+      .ant-table-row-expand-icon {
+        margin-left: 8px;
+      }
+    }
+    .table-columns-item-title {
+      display: flex;
+      align-items: center;
+      .anticon {
+        color: #bbbbbb;
+        margin-left: 4px;
+      }
+    }
+    .custom-field-column-title {
+      display: block;
+      width: 100%;
+      max-width: 100px;
+      min-width: 0;
+      overflow: hidden;
+      color: inherit;
+      font-weight: bold;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .custom-field-column-value {
+      display: block;
+      width: 100%;
+      max-width: 100px;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ant-table-footer{
+      padding: 0 !important;
+    }
+    .ant-table-wrapper
+      .ant-table.ant-table-small
+      .ant-table-tbody
+      .ant-table-wrapper:only-child
+      .ant-table {
+      margin-block: -8px;
+      margin-inline: 40px -8px;
+    }
+    .ant-table-expanded-row {
+      .ant-table {
+        margin-inline: 12px -8px !important;
+        .ant-table-thead {
+          display: none;
+        }
+        .ant-table-row-level-0 {
+          .ant-table-cell {
+            // padding-left: 14px;
+          }
+          .ant-table-cell:first-child {
+            // padding-left: 20px;
+          }
+        }
+      }
+    }
+    .ant-table-row-level-1 {
+      .ant-table-row-expand-icon-cell {
+        // padding-left: 20px !important;
+        text-align: right;
+      }
+    }
+    .ant-empty {
+      max-width: 900px;
+      height: 218px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .ant-empty-image {
+        margin: 0 !important;
+      }
+    }
+  }
+  .set-icon {
+    z-index: 99;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    height: 60px;
+  }
+}
+.ant-input-textarea-affix-wrapper {
+  textarea {
+    padding-bottom: 20px;
+  }
+}
+.regBatchNew-form {
+  margin-top: -10px;
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+}
+.regBatchNew-modal {
+  .ant-modal-content {
+    padding: 16px 12px !important;
+  }
+}
+.workItemEntity-select {
+  .ant-select-selection-overflow {
+    .ant-select-selection-item {
+      max-width: 125px !important;
+    }
+  }
+}
+.batch-work-item-entity-dropdown {
+  .ant-select-item-option-content,
+  .batch-work-item-entity-option {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .batch-work-item-entity-option .custom-field-cascader-option {
+    max-width: 100%;
+  }
+}
+  .custom-levelIcon {
+    width:15px;
+    height:15px;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 3px
+  }
+  .dayup-error{
+    color: #df000e;
+    margin-left: 77px;
+  }
+
+  
+

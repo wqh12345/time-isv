@@ -1,0 +1,619 @@
+.approval-set-warp {
+  position: relative;
+  // padding-bottom: 54px;
+  .approval-set-top {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eff0f1;
+  }
+  .approval-set-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .approval-set-label {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #1f2329;
+  }
+ .anticon {
+    color: #C6C6C6;
+    margin-left: 4px;
+    font-size: 13px;
+  }
+  .approval-set-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .approval-set-des {
+    font-size: 14px;
+    line-height: 22px;
+    color: #646a73;
+  }
+  .approval-recheck-section {
+    margin-bottom: 24px;
+  }
+  .approval-title-f16{
+    display: flex;
+    align-items: center;
+    padding: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #1f2329;
+  }
+  .approval-set-tip{
+    color: #646a73;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .table-columns-item-title {
+    display: flex;
+    align-items: center;
+    .anticon {
+      color: #bbbbbb;
+      margin-left: 4px;
+    }
+  }
+  .approval-form {
+    margin-top: 8px;
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+    .input-disabled {
+      color: #262626;
+      background-color: inherit;
+      border-color: transparent;
+      box-shadow: none;
+      cursor: default;
+      opacity: 1;
+    }
+    .select-disabled {
+      .ant-select-selector {
+        border: none;
+        background: inherit;
+        color: #262626;
+        cursor: default;
+        &::after {
+          content: "";
+        }
+        .ant-select-selection-wrap {
+          &::after {
+            content: "";
+          }
+        }
+      }
+      .ant-select-arrow {
+        display: none;
+      }
+    }
+  }
+  .approval-set-content {
+    max-width: 806px;
+  }
+  // 飞书审批分支：按 UI 图铺满整行，表格宽度 100%（默认自研分支仍保持 806px）
+  .approval-set-content-full {
+    max-width: 100%;
+  }
+  .approval-mode-section,
+  .approval-config-section .config-item {
+    margin-bottom: 24px;
+  }
+  .approval-mode-options .ant-radio-wrapper,
+  .config-value .ant-radio-wrapper {
+    margin-inline-end: 24px;
+    color: #1f2329;
+    font-size: 14px;
+  }
+  .approval-fallback-users {
+    margin-top: 18px;
+    margin-bottom: 0 !important;
+  }
+  .approval-same-user-section .config-item {
+    margin-bottom: 24px;
+  }
+  .approval-same-user-tip {
+    cursor: pointer;
+  }
+  .approval-set-bottom {
+    position: absolute;
+    bottom: 0;
+    justify-content: flex-start;
+    width: 100%;
+    .ant-btn-primary {
+      min-width: 96px;
+      height: 36px;
+      border-radius: 6px;
+    }
+    .ant-btn-primary:disabled {
+      color: #fff;
+      background: #c9cdd4;
+      border-color: #c9cdd4;
+    }
+  }
+  
+  // 审批人容器样式
+  .approval-users-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-height: 32px;
+  }
+  
+  // 审批人标签样式
+  .approval-user-tag {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 2px 8px 2px 2px;
+    border-radius: 100px;
+    font-size: 12px;
+    height: 28px;
+    background: #eff0f1;
+    
+    .user-name {
+      margin-right: 4px;
+      color: #1F2329;
+      font-size: 14px;
+    }
+    
+    .remove-user-btn {
+      background: none;
+      border: none;
+      color: #646A73;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      padding: 0;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+  }
+  
+  // 蓝色标签样式
+  .blue-tag {
+    background-color: #e6f4ff;
+    color: #1890ff;
+    border: 1px solid #91d5ff;
+  }
+  
+  // 灰色标签样式
+  .gray-tag {
+    background-color: #f0f0f0;
+    color: #666;
+    border: 1px solid #d9d9d9;
+  }
+  
+  // 添加按钮样式
+  .add-user-btn {
+    color: #999;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 30px;
+    border-radius: 16px;
+    border: 1px solid #e5e6eb;
+    background: #fff;
+  }
+  .approval-set-error{
+    margin-top: 4px;
+    color: #f54a45;
+    font-size: 12px;
+  }
+  .config-value .ant-select,
+  .config-value .team-picker,
+  .config-value .team-picker-wrap {
+    max-width: 360px;
+  }
+  .config-value .ant-select-selector {
+    min-height: 32px !important;
+    border-radius: 6px !important;
+  }
+  .add-user-btn:hover {
+    border-color: #1890ff;
+    color: #1890ff;
+  }
+}
+
+.approval-table-container {
+  width: 100%;
+  max-width: 806px;
+  .approval-table-header {
+    margin-bottom: 8px;
+    .header-title {
+      color: #262626;
+      margin-bottom: 0;
+    }
+    .header-tip {
+      color: #ff4d4f;
+      font-size: 12px;
+    }
+  }
+  .ant-table {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    .ant-table-thead > tr > th {
+      padding: 10px 16px;
+      background: #F8F9FA;
+      border-bottom: 1px solid #e5e6eb;
+      color: #1f2329;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .ant-table-tbody > tr > td {
+      padding: 8px 16px;
+      border-bottom: 1px solid #e5e6eb;
+    }
+    .ant-table-tbody > tr:last-child > td {
+      border-bottom: none;
+    }
+    .ant-table-body >table >tbody>tr>td{
+      vertical-align: top;
+    }
+    .ant-table-body >table >tbody>tr>td:last-child{
+      vertical-align: middle
+    }
+    .add-role-row{
+      vertical-align: top;
+      margin-right: 2px;
+      margin-top: 3px;
+    }
+  }
+  .add-row-container {
+    color: #646A73;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // margin-top: 16px;
+  }
+  .ant-table-wrapper .ant-table-footer {
+    padding: 8px 16px;
+    color: #646a73;
+    background: #f7f8fa;
+  }
+  .ant-table-wrapper .ant-table-thead>tr>th,
+  .ant-table-wrapper .ant-table-tbody>tr>td{
+    padding: 8px 16px;
+  }
+  .action-buttons {
+    display: flex;
+    justify-content: center;
+  }
+  .delete-disabled {
+    font-size: 14px;
+    color: #d9d9d9 !important;
+    cursor: not-allowed !important;
+  }
+   .delete-show {
+    color: #4247f6 !important;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .ant-table-header > table > thead > tr > th:last-child {
+    border-right:1px solid #f0f0f0 !important;
+  }
+}
+
+/* 审批方式选择卡片
+   注意：这些类名（.approval-type-*）在 DOM 中位于 .approval-set-content 内，并不是 .approval-table-container 的子节点。
+   原先它们被误嵌在 .approval-table-container 下，选择器不匹配 → 卡片完全没有样式。
+   这里移到顶层（类名在本组件内唯一），使「审批方式」卡片按 UI 图正常渲染。 */
+.approval-type-section {
+  margin-bottom: 32px;
+}
+.approval-type-cards {
+  display: flex;
+  gap: 24px;
+}
+.approval-type-card {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid #dee0e3;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    border-color: #a5a8e8;
+  }
+  .approval-type-card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    flex-shrink: 0;
+    img {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+  }
+  .approval-type-card-title {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1f2329;
+  }
+  .approval-type-card-radio {
+    pointer-events: none;
+    margin: 0;
+  }
+}
+.approval-type-card-active {
+  border-color: #4247f6;
+  background: #f4f5ff;
+}
+// 「审批方式」标题与卡片间距，按 UI 图微调（仅作用于该区块）
+.approval-type-section .approval-title-f16 {
+  padding-bottom: 12px;
+}
+
+/* 飞书审批设置区块（同样移出 .approval-table-container，并补齐表格样式以匹配 UI 图） */
+.feishu-approval-section {
+  .feishu-approval-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .ant-table {
+    // 与下方「保存设置」吸底栏拉开间距：该栏带 box-shadow: 0 -8px 16px rgba(255,255,255,.9)
+    // （见 admin/index.less 的 .admin-setting-body .approval-set-bottom），白色阴影会盖住紧贴其上的 1px 底边框。
+    // 保留 24px 间距后，表格底边框不再被白色阴影冲淡。
+    margin-bottom: 24px;
+    border: 1px solid #e5e6eb;
+    border-radius: 8px;
+    overflow: hidden;
+    .ant-table-thead > tr > th {
+      padding: 10px 16px;
+      background: #f5f6f7;
+      border-bottom: 1px solid #e5e6eb;
+      color: #1f2329;
+      font-size: 13px;
+      font-weight: 600;
+      // 去掉 antd 表头竖分隔线，贴合 UI 图
+      &::before {
+        display: none;
+      }
+    }
+    .ant-table-tbody > tr > td {
+      padding: 12px 16px;
+      color: #1f2329;
+      border-bottom: 1px solid #e5e6eb;
+    }
+    .ant-table-tbody > tr:last-child > td {
+      border-bottom: none;
+    }
+  }
+  a {
+    color: #4247f6;
+  }
+}
+
+/* ==========================================================================
+   飞书审批规则 · 新建 / 编辑弹窗
+   （弹窗经 Portal 挂到 body 下，故这些类名写在最外层，不嵌在 .approval-set-warp 里）
+   ========================================================================== */
+
+@feishu-primary: #4247f6;
+@feishu-border: #e5e6eb;
+@feishu-text: #1f2329;
+@feishu-sub: #646a73;
+
+/* 表单项 */
+.feishu-rule-modal-wrap {
+  .feishu-form-item {
+    margin-bottom: 20px;
+  }
+  .feishu-form-label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 22px;
+    color: @feishu-text;
+  }
+  .feishu-form-required {
+    margin-left: 3px;
+    color: #f54a45;
+  }
+  .feishu-form-error {
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #f54a45;
+  }
+  .feishu-form-error2 {
+    margin-top: 0px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #f54a45;
+  }
+  .feishu-form-tip {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 20px;
+    color: @feishu-sub;
+  }
+  /* 规则名称计数 0/30 的位置 */
+  .ant-input-show-count-suffix {
+    color: #8f959e;
+    font-size: 12px;
+  }
+
+  /* 工作项下拉里被占用的选项 */
+  .feishu-workitem-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .feishu-workitem-occupied {
+    color: #8f959e;
+    font-size: 12px;
+  }
+}
+
+/* 工作项下拉：顶部内嵌搜索框 */
+.feishu-workitem-select-dropdown {
+  .feishu-workitem-search {
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+}
+
+/* 字段映射区 */
+.feishu-rule-modal-wrap {
+  .feishu-mapping-section {
+    margin-top: 4px;
+    padding-top: 16px;
+  }
+  .feishu-mapping-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .feishu-mapping-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #646A73;
+  }
+  .feishu-mapping-refresh {
+    color: #4147F5;
+    cursor: pointer;
+    &:hover {
+      color: #4147F5;
+    }
+  }
+  .feishu-mapping-tip {
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    background: #fff7e6;
+    border: 1px solid #ffd591;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #ad6800;
+  }
+
+  /* 表格：上限高度内滚动 */
+  .feishu-mapping-table {
+    max-height: 260px;
+    overflow-y: auto;
+    border: 1px solid @feishu-border;
+    border-radius: 8px;
+    .ant-table-thead > tr > th {
+      padding: 8px 12px;
+     background: #F8F9FA;
+      border-bottom: 1px solid @feishu-border;
+      color: @feishu-text;
+      font-size: 13px;
+      font-weight: 500;
+      &::before {
+        display: none;
+      }
+    }
+    /* 行分隔线改用 border-top：明细容器的合并单元格（rowSpan）底边不会与外框叠成双线 */
+    .ant-table-tbody > tr > td {
+      padding: 12px;
+      vertical-align: middle;
+      border-top: 1px solid @feishu-border;
+      color: @feishu-text;
+      font-size: 14px;
+      padding-left: 16px !important;
+    }
+    .ant-table-tbody > tr:first-child > td {
+      border-top: none;
+    }
+    /* 明细容器：纵向合并的第一列给出明细区右侧竖分隔线（垂直居中已统一在 td 上） */
+    .feishu-field-cell.is-container {
+      border-right: 1px solid @feishu-border;
+    }
+  }
+  .feishu-field-name {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .feishu-field-text {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .feishu-field-required {
+    flex: none;
+    margin-left: 2px;
+    color: #f54a45;
+  }
+  .feishu-source-dash {
+    color: #8f959e;
+  }
+  .feishu-source-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .feishu-mapping-empty {
+    padding: 32px 0;
+    text-align: center;
+    font-size: 13px;
+    color: @feishu-sub;
+    border: 1px solid @feishu-border;
+    border-radius: 8px;
+  }
+
+  /* 「角色审批」子区域：按工作项逐个配角色 */
+  .feishu-role-area {
+    padding: 8px 10px;
+   background: #F8F9FA;
+    border-radius: 6px;
+  }
+  .feishu-role-empty {
+    font-size: 12px;
+    color: @feishu-sub;
+  }
+  .feishu-role-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    & + .feishu-role-row {
+      margin-top: 8px;
+    }
+  }
+  .feishu-role-name {
+    flex: 0 0 96px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 24px;
+    color: @feishu-sub;
+  }
+  .feishu-role-control {
+    flex: 1;
+    min-width: 0;
+  }
+  .feishu-role-select {
+    width: 100%;
+  }
+}
