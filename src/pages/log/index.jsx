@@ -1189,7 +1189,7 @@ const Log = (props) => {
           loading={logLoading}
           columns={logColumns}
           dataSource={logList?.nodeWorkHours}
-          rowKey="id"
+          rowKey={(record, index) => `${record.projectKey ?? ''}_${record.id ?? ''}_${index}`}
           rowSelection={{
             selectedRowKeys,
             preserveSelectedRowKeys: false,
