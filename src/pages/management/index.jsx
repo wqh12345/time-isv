@@ -1343,9 +1343,9 @@ class Management extends Component {
                       <Button
                         size="small"
                         type="primary"
-                        onClick={this.onQueryEntityStatExport}
+                        className="export-btn" onClick={this.onQueryEntityStatExport}
                       >
-                        导出
+                        导出数据
                       </Button>
                     </Space>
                   </div>
@@ -1485,9 +1485,9 @@ class Management extends Component {
                       <Button
                         type="primary"
                         size="small"
-                        onClick={this.onQueryStaffStatExport}
+                        className="export-btn" onClick={this.onQueryStaffStatExport}
                       >
-                        导出
+                        导出数据
                       </Button>
                     </Space>
                   </div>
@@ -1671,8 +1671,8 @@ class Management extends Component {
                         onChange={this.handleRangeTypeChange}
                         options={rangeTypeOptions}
                       />
-                      <Button size="small" onClick={this.onQuerySelfStatExport}>
-                        导出
+                      <Button size="small" className="export-btn" onClick={this.onQuerySelfStatExport}>
+                        导出数据
                       </Button>
                       <RegBtn
                         loginUser={this.props?.loginUser}
