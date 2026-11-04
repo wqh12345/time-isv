@@ -1168,10 +1168,11 @@ const Log = (props) => {
               color="primary"
               variant="outlined"
               size="small"
+              className="export-btn"
               disabled={exportLoading}
               onClick={onExport}
             >
-              导出
+              导出数据
             </Button>
             <RegBtn
               loginUser={props?.loginUser}
@@ -1189,7 +1190,7 @@ const Log = (props) => {
           loading={logLoading}
           columns={logColumns}
           dataSource={logList?.nodeWorkHours}
-          rowKey="id"
+          rowKey={(record, index) => `${record.projectKey ?? ''}_${record.id ?? ''}_${index}`}
           rowSelection={{
             selectedRowKeys,
             preserveSelectedRowKeys: false,
