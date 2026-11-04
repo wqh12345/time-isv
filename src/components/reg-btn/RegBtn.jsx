@@ -91,7 +91,7 @@ const RegBtn = (props) => {
         }}
         placement="bottomRight"
       >
-        <Button size="small" type="primary">
+        <Button size="small" type="primary" className="reg-entry-btn">
           工时登记
         </Button>
       </Dropdown>
