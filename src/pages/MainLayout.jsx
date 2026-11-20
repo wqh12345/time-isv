@@ -202,7 +202,7 @@ export default function MainLayout() {
     { label: '工时日志', key: 'log' },
     { label: '工时审批', key: 'approval' },
     { label: '工时管理', key: 'management' },
-    ...(isAdminRole ? [{ label: '后台设置', key: 'admin' }] : []),
+    ...(isAdminRole ? [{ label: '系统设置', key: 'admin' }] : []),
     ...(sessionStorage.getItem('jwtMeegoTeamworkUserRole') === 'Admin'
       ? [{ label: '插件设置', key: 'setting' }]
       : []),
