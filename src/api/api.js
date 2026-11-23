@@ -1080,7 +1080,7 @@ export function postWorkHoursTotalDetail(data) {
   return post('resourceManagement/user/workHours/total', data)
 }
 
-/** 方案中心 */
+/** 套餐中心 */
 
 // 是否显示【领取 7 天免费权益】按钮
 export function getHasFree() {
