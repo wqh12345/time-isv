@@ -206,7 +206,7 @@ export default function MainLayout() {
     ...(sessionStorage.getItem('jwtMeegoTeamworkUserRole') === 'Admin'
       ? [{ label: '插件设置', key: 'setting' }]
       : []),
-    { label: '方案中心', key: 'pay' },
+    { label: '套餐中心', key: 'pay' },
   ]
 
   const helpItems = [
