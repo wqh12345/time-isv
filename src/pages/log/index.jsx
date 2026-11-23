@@ -1171,7 +1171,7 @@ const Log = (props) => {
               disabled={exportLoading}
               onClick={onExport}
             >
-              导出
+              导出数据
             </Button>
             <RegBtn
               loginUser={props?.loginUser}
